@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  backend:
+    restart: always
+    build:
+      context: ./backend
+    container_name: spring_backend
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5433/cassinidb
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: admin
+    depends_on:
+      - db
+
+  django:
+    restart: always
+    build: ./backend_django
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend_django:/app
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15
+    container_name: postgres_cassini
+    environment:
+      POSTGRES_DB: cassinidb
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres-cassini:/var/lib/postgresql/data
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    stdin_open: true
+    tty: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - backend
+      - django
+
+volumes:
+  postgres-cassini:
