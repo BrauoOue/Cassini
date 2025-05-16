@@ -1,4 +1,4 @@
-# Cassini Hackathon
+# Cassini Hackathon-1
 ## Team SatPulse's Solution
 
 Database postgresql \
