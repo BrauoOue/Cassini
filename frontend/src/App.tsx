@@ -42,7 +42,7 @@ function App() {
                   <Route path="/dashboard" element={<UserDashboard/>}></Route>
                   <Route path="/form" element={<FormPage/>}></Route>
                   <Route path="/map" element={<MapPage/>}></Route>
-                  <Route path="/map/threapist" element={<TherapistPage/>}></Route>
+                  <Route path="/map/threapist/:id" element={<TherapistPage/>}></Route>
                   <Route path="/therapist/:id" element={<TherapistDetails/>}></Route>
                   <Route path="/peer/:id" element={<PeerDetails/>}></Route>
               </Routes>

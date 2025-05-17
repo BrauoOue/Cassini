@@ -124,16 +124,16 @@ export default function MapPage() {
     <div className="bg-gradient-to-br bg-white from-white min-h-screen text-black font-sans px-6 py-10 relative">
       <div className="max-w-6xl mx-auto">
         <header className="text-center mb-10">
-          <h1 className="text-4xl font-bold text-[#1E3A8A]">
+          <h1 className="text-4xl font-bold text-black">
             Explore Wellness Spots in Skopje
           </h1>
-          <p className="text-gray-600 mt-2">
+          <p className="text-black mt-2">
             A live view of nearby locations ideal for your mental and physical well-being.
           </p>
         </header>
 
         <section className="mb-12 relative">
-          <h2 className="text-lg font-semibold mb-2">Health Spots Map</h2>
+          <h2 className="text-lg font-semibold mb-2 text-center">Health Spots Map</h2>
           <div className="h-[600px] w-full rounded-xl overflow-hidden border border-gray-300 relative">
             {/* Floating Risk Modal */}
             <div className="absolute top-4 right-4 z-[1000] bg-white/80 backdrop-blur-md shadow-lg border border-gray-200 rounded-2xl p-4 w-72">
@@ -202,7 +202,7 @@ export default function MapPage() {
 
                         {/* Booking Page */}
                         <a
-                          href={`/book/${spot.id}`}
+                          href={`/map/threapist/${spot.id}`}
                           className="bg-green-600 text-white text-sm rounded-md px-3 py-1 text-center hover:bg-green-700"
                         >
                           📅 Book a Session

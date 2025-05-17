@@ -67,7 +67,7 @@ export default function TherapistDetails() {
                 <MapContainer
                     center={therapist.location}
                     zoom={15}
-                    className="h-64 w-full rounded-lg border-2 border-black mb-6"
+                    className="h-64 w-full rounded-lg border-2 border-mb-6"
                 >
                     <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
                     <Marker position={therapist.location}>
