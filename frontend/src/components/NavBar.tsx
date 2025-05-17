@@ -12,7 +12,7 @@ type NavItemProp = {
 const navItems = [
   {
     type: "logo",
-    content: "SatPulse",
+    content: "SveMir",
     className: "mix-blend-difference text-white text-3xl font-black",
     to: "/",
   },

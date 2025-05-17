@@ -6,6 +6,9 @@ import FormPage from "./pages/FormPage.tsx";
 import MapPage from "./pages/MapPage.tsx";
 import axiosSpringInstance from "./network/AxiosSpringInstance.ts";
 import axiosDjangoInstance from "./network/AxiosDjangoInstance.ts";
+import Cursor from "./components/Cursor.tsx";
+import NavBar from "./components/NavBar.tsx";
+import MenuAside from "./components/MenuAside.tsx";
 
 function App() {
     const fetchSpring = async () => {
@@ -24,6 +27,9 @@ function App() {
   return (
       <Router>
           <div className="App">
+            <Cursor></Cursor>
+            <NavBar></NavBar>
+            <MenuAside></MenuAside>
               {/* <NavBar/> */}
               <Routes>
                   <Route path="/" element={<HomePage/>}></Route>
