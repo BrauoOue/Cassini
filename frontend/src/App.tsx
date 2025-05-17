@@ -1,7 +1,9 @@
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage.tsx";
-import NavBar from "./components/NavBar.tsx";
+import UserDashboard from "./pages/UserDashboard.tsx";
+import FormPage from "./pages/FormPage.tsx";
+import MapPage from "./pages/MapPage.tsx";
 import axiosSpringInstance from "./network/AxiosSpringInstance.ts";
 import axiosDjangoInstance from "./network/AxiosDjangoInstance.ts";
 
@@ -25,6 +27,9 @@ function App() {
               {/* <NavBar/> */}
               <Routes>
                   <Route path="/" element={<HomePage/>}></Route>
+                  <Route path="/dashboard" element={<UserDashboard/>}></Route>
+                  <Route path="/form" element={<FormPage/>}></Route>
+                  <Route path="/map" element={<MapPage/>}></Route>
               </Routes>
           </div>
       </Router>
