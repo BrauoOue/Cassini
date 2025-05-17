@@ -4,25 +4,28 @@ import HomePage from "./pages/HomePage.tsx";
 import UserDashboard from "./pages/UserDashboard.tsx";
 import FormPage from "./pages/FormPage.tsx";
 import MapPage from "./pages/MapPage.tsx";
-import axiosSpringInstance from "./network/AxiosSpringInstance.ts";
-import axiosDjangoInstance from "./network/AxiosDjangoInstance.ts";
+import TherapistPage from "./pages/TherapistPage.tsx";
+import PeerDetails from "./pages/PeerDetails.tsx";
+import TherapistDetails from "./pages/TherapistDetails.tsx";
+// import axiosSpringInstance from "./network/AxiosSpringInstance.ts";
+// import axiosDjangoInstance from "./network/AxiosDjangoInstance.ts";
 import Cursor from "./components/Cursor.tsx";
 import NavBar from "./components/NavBar.tsx";
 import MenuAside from "./components/MenuAside.tsx";
 
 function App() {
-    const fetchSpring = async () => {
-        const response = await axiosSpringInstance.get('/rest');
-        console.log('Spring: ',response.data);
-    };
+    // const fetchSpring = async () => {
+    //     const response = await axiosSpringInstance.get('/rest');
+    //     console.log('Spring: ',response.data);
+    // };
+    //
+    // const fetchDjango = async () => {
+    //     const response = await axiosDjangoInstance.get('/django/hello/');
+    //     console.log('Django: ', response.data);
+    // };
 
-    const fetchDjango = async () => {
-        const response = await axiosDjangoInstance.get('/django/hello/');
-        console.log('Django: ', response.data);
-    };
-
-    fetchDjango()
-    fetchSpring()
+    // fetchDjango()
+    // fetchSpring()
 
   return (
       <Router>
@@ -36,6 +39,9 @@ function App() {
                   <Route path="/dashboard" element={<UserDashboard/>}></Route>
                   <Route path="/form" element={<FormPage/>}></Route>
                   <Route path="/map" element={<MapPage/>}></Route>
+                  <Route path="/map/threapist" element={<TherapistPage/>}></Route>
+                  <Route path="/therapist/:id" element={<TherapistDetails/>}></Route>
+                  <Route path="/peer/:id" element={<PeerDetails/>}></Route>
               </Routes>
           </div>
       </Router>
