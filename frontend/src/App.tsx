@@ -22,7 +22,7 @@ function App() {
   return (
       <Router>
           <div className="App">
-              <NavBar/>
+              {/* <NavBar/> */}
               <Routes>
                   <Route path="/" element={<HomePage/>}></Route>
               </Routes>

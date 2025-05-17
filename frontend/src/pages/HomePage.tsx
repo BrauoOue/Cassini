@@ -1,11 +1,29 @@
-import React from 'react';
+import { useEffect } from 'react';
+
+// Lenis Scroll
+import { LenisScroll } from '../assets/utils/LenisScroll';
+
+// Cursor Component
+import Cursor from '../components/Cursor';
+
+// Navbar Component
+import NavBar from '../components/NavBar';
+
+// Menu Aside
+import MenuAside from '../components/MenuAside';
 
 const HomePage = () => {
+
+    useEffect(()=>{
+        LenisScroll()
+    },[])
+
+
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white">
-            <h1 className="text-4xl md:text-6xl font-bold text-center">
-                Welcome to Cassini Hackathon
-            </h1>
+        <div className="h-screen w-screen overflow-x-hidden bg-white">
+            <Cursor></Cursor>
+            <NavBar></NavBar>
+            <MenuAside></MenuAside>
         </div>
     );
 };
