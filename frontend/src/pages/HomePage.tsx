@@ -6,15 +6,20 @@ import { LenisScroll } from '../assets/utils/LenisScroll';
 // Video
 import Video from '../components/Video';
 
-const HomePage = () => {
+type VideoProps = {
+  setVideoView: (arg: boolean) => void;
+};
+
+
+const HomePage = ({setVideoView}:VideoProps) => {
 
     useEffect(()=>{
         LenisScroll()
     },[])
 
     return (
-        <div className="h-auto overflow-x-hidden bg-white">
-            <Video></Video>
+        <div className="bg-white overflow-x-clip">
+            <Video setVideoView={setVideoView}></Video>
         </div>
     );
 };

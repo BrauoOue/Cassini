@@ -9,6 +9,7 @@ import axiosDjangoInstance from "./network/AxiosDjangoInstance.ts";
 import Cursor from "./components/Cursor.tsx";
 import NavBar from "./components/NavBar.tsx";
 import MenuAside from "./components/MenuAside.tsx";
+import { useState } from 'react';
 
 function App() {
     const fetchSpring = async () => {
@@ -24,15 +25,17 @@ function App() {
     fetchDjango()
     fetchSpring()
 
+    const [videoView,setVideoView] = useState<boolean>(true)
+    
   return (
       <Router>
           <div className="App">
             <Cursor></Cursor>
-            <NavBar></NavBar>
-            <MenuAside></MenuAside>
+            <NavBar videoView={videoView}></NavBar>
+            <MenuAside videoView={videoView}></MenuAside>
               {/* <NavBar/> */}
               <Routes>
-                  <Route path="/" element={<HomePage/>}></Route>
+                  <Route path="/" element={<HomePage setVideoView={setVideoView}/>}></Route>
                   <Route path="/dashboard" element={<UserDashboard/>}></Route>
                   <Route path="/form" element={<FormPage/>}></Route>
                   <Route path="/map" element={<MapPage/>}></Route>
