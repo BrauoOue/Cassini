@@ -5,61 +5,104 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 
 const socialLinks = [
-  { name: "Instagram", icon: <CiInstagram />, href: "https://www.instagram.com" },
-  { name: "LinkedIn", icon: <FaLinkedinIn />, href: "https://www.linkedin.com" },
+  {
+    name: "Instagram",
+    icon: <CiInstagram />,
+    href: "https://www.instagram.com",
+  },
+  {
+    name: "LinkedIn",
+    icon: <FaLinkedinIn />,
+    href: "https://www.linkedin.com",
+  },
   { name: "Twitter", icon: <FaXTwitter />, href: "https://twitter.com" },
 ];
 
 const menuContentItems = ["Home", "Dashboard", "Researches"];
 
-const MenuAside = () => {
+type MenuAsideProps = {
+  videoView: boolean;
+};
+
+const MenuAside = ({ videoView }: MenuAsideProps) => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   return (
-    <motion.div
-      variants={{
-        open: { width: "100vw" },
-        hidden: { width: "5rem" },
-      }}
-      animate={isOpenMenu ? "open" : "hidden"}
-      transition={{ type: "spring", stiffness: 500, damping: 50 }}
-      className="fixed inset-0 h-screen z-[10000] overflow-hidden"
-    >
-      <div className="absolute inset-0 bg-sky-50 backdrop-blur-sm z-0" />
+    <AnimatePresence mode="wait">
+      {!videoView && (
+        <motion.div
+          variants={{
+            open: { width: "100vw" },
+            hidden: { width: "5rem" },
+            exit: {width: 0}
+          }}
+          animate={isOpenMenu ? "open" : "hidden"}
+          transition={{ type: "spring", stiffness: 500, damping: 50 }}
+          exit="exit"
+          className="fixed inset-0 h-screen z-[10000] overflow-hidden"
+        >
+          <div className="absolute inset-0 bg-sky-50 backdrop-blur-sm z-0" />
 
-      <div className="absolute top-0 left-4 flex flex-col justify-between h-full py-6 z-[100]">
-        <HamburgerMenu isOpenMenu={isOpenMenu} toggleMenu={() => setIsOpenMenu(prev => !prev)} />
-        <SocialMediaIcons />
-      </div>
+          <div className="absolute top-0 left-4 flex flex-col justify-between h-full py-6 z-[100]">
+            <HamburgerMenu
+              isOpenMenu={isOpenMenu}
+              toggleMenu={() => setIsOpenMenu((prev) => !prev)}
+            />
+            <SocialMediaIcons />
+          </div>
 
-      <AnimatePresence mode="wait">
-        {isOpenMenu && <MenuContent />}
-      </AnimatePresence>
-    </motion.div>
+          <AnimatePresence mode="wait">
+            {isOpenMenu && <MenuContent />}
+          </AnimatePresence>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 
 export default MenuAside;
 
-const HamburgerMenu = ({ isOpenMenu, toggleMenu }: { isOpenMenu: boolean; toggleMenu: () => void }) => (
-  <button onClick={toggleMenu} className="w-10 h-10 relative z-50 cursor-pointer" aria-label="Toggle menu">
+const HamburgerMenu = ({
+  isOpenMenu,
+  toggleMenu,
+}: {
+  isOpenMenu: boolean;
+  toggleMenu: () => void;
+}) => (
+  <button
+    onClick={toggleMenu}
+    className="w-10 h-10 relative z-50 cursor-pointer"
+    aria-label="Toggle menu"
+  >
     <svg viewBox="0 0 24 24" className="w-full h-full">
       <motion.line
-        x1="3" y1="6" x2="21" y2="6"
-        stroke="black" strokeWidth="2.5"
+        x1="3"
+        y1="6"
+        x2="21"
+        y2="6"
+        stroke="black"
+        strokeWidth="2.5"
         animate={isOpenMenu ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
         transition={{ duration: 0.4 }}
         style={{ originX: 0.5, originY: 0.5 }}
       />
       <motion.line
-        x1="3" y1="12" x2="21" y2="12"
-        stroke="black" strokeWidth="2.5"
+        x1="3"
+        y1="12"
+        x2="21"
+        y2="12"
+        stroke="black"
+        strokeWidth="2.5"
         animate={{ opacity: isOpenMenu ? 0 : 1 }}
         transition={{ duration: 0.2 }}
       />
       <motion.line
-        x1="3" y1="18" x2="21" y2="18"
-        stroke="black" strokeWidth="2.5"
+        x1="3"
+        y1="18"
+        x2="21"
+        y2="18"
+        stroke="black"
+        strokeWidth="2.5"
         animate={isOpenMenu ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
         transition={{ duration: 0.4 }}
         style={{ originX: 0.5, originY: 0.5 }}
@@ -105,8 +148,8 @@ const MenuContentItem = ({ item, index }: { item: string; index: number }) => {
         className="absolute inset-0 w-full h-full bg-black rounded-xl"
         style={{ originX: 0 }}
         variants={{
-          hidden: {scaleX: 0 },
-          visible: { scaleX: 1},
+          hidden: { scaleX: 0 },
+          visible: { scaleX: 1 },
         }}
         initial="hidden"
         animate={isHovered ? "visible" : "hidden"}

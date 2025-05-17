@@ -18,19 +18,23 @@ const navItems = [
   },
   {
     type: "link",
-    content: "Workout",
+    content: "My Peace",
     className:
       "border border-white text-center px-4 md:px-6 py-1.5 md:py-2 mix-blend-difference text-white rounded-xl",
-    to: "/workout",
+    to: "/form",
   },
 ];
 
-const NavBar = () => {
+type NavBarProps = {
+  videoView?: boolean
+}
+
+const NavBar = ({videoView}: NavBarProps) => {
   const renderItem = (item: NavItemProp, index: number) => {
     switch (item.type) {
       case "logo":
         return (
-          <FlipLink key={index} className={item.className}>
+          <FlipLink videoView={videoView} key={index} className={item.className}>
             {item.content}
           </FlipLink>
         );
@@ -44,7 +48,7 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="fixed top-5 flex justify-between items-center w-screen mx-[5%] md:px-[10%] mix-blend-difference z-[10001] h-12">
+    <nav className="fixed top-5 flex justify-between items-center w-screen mx-[5%] md:px-[10%] mix-blend-difference z-[10001] h-12 ">
       {navItems.map(renderItem)}
     </nav>
   );
@@ -55,9 +59,11 @@ export default NavBar;
 const FlipLink = ({
   children,
   className,
+  videoView
 }: {
   children: string;
   className: string;
+  videoView: boolean | undefined
 }) => {
   const DURATION = 0.25;
   const STAGGER = 0.025;
@@ -67,7 +73,7 @@ const FlipLink = ({
       initial="initial"
       whileHover="hovered"
       className={`relative block overflow-hidden whitespace-nowrap ${className} pl-12 md:pl-5 lg:pl-3`}
-      animate="visible"
+      animate={videoView ? "hidden" : "visble"}
     >
       <div>
         {children.split("").map((char, index) => (
@@ -131,7 +137,6 @@ type WorkoutProps = {
 
 const Workout = ({ index, item }: WorkoutProps) => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
-  console.log(isHovered)
   return (
     <motion.div key={index} className="relative py-5 overflow-hidden">
       <motion.div
