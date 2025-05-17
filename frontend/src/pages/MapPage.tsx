@@ -44,7 +44,7 @@ export default function MapPage() {
     };
 
     return (
-        <div className="bg-gradient-to-br from-white min-h-screen text-black font-sans px-6 py-10">
+        <div className="bg-gradient-to-br bg-white from-white min-h-screen text-black font-sans px-6 py-10">
             <div className="max-w-6xl mx-auto">
                 <header className="text-center mb-10">
                     <h1 className="text-4xl font-bold text-[#1E3A8A]">Explore Wellness Spots in Skopje</h1>
