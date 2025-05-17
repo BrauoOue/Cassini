@@ -170,7 +170,7 @@ export default function FormPage() {
                                 to="/map"
                                 className="border-2 border-black text-black px-6 py-2 rounded-xl font-medium hover:bg-black hover:text-white transition"
                             >
-                                Workout
+                                Submit
                             </Link>
                         </Box>
                     </Fade>
