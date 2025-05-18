@@ -294,8 +294,8 @@ export default function MapPage() {
 
   return (
     <div className="bg-gradient-to-br bg-white from-white min-h-screen text-black font-sans px-6 py-10 relative">
-        <Navbar />
-        <MenuAside/>
+        {/* <Navbar />
+        <MenuAside/> */}
       <div className="max-w-6xl mx-auto">
         <header className="text-center mb-10">
           <h1 className="text-4xl sm:text-4xl font-extrabold text-black mb-2">

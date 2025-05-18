@@ -59,8 +59,8 @@ export default function FormPage() {
 
     return (
         <div className="bg-gradient-to-br from-white to-white min-h-screen text-gray-900 font-sans px-6 py-10">
-            <Navbar />
-        <MenuAside/>
+            {/* <Navbar />
+        <MenuAside/> */}
             <header className="max-w-5xl mx-auto text-center">
                 <Typography variant="h3" fontWeight="bold" color="black">
                     Your Self Reflection Form

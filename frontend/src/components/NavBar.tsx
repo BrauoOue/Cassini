@@ -166,7 +166,7 @@ const Workout = ({ index, item }: WorkoutProps) => {
       <Link
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        to={item.to}
+        to={(item.to)}
         className={`relative z-10 ${item.className}`}
       >
         {item.content}
