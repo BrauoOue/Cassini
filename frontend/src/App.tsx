@@ -14,6 +14,7 @@ import NavBar from "./components/NavBar.tsx";
 import MenuAside from "./components/MenuAside.tsx";
 import type {CursorType} from './assets/utils/types'
 import { useState } from 'react';
+import CirclePage from './pages/CirclePage';
 
 function App() {
     // const fetchSpring = async () => {
@@ -47,6 +48,7 @@ function App() {
                   <Route path="/form" element={<FormPage/>}></Route>
                   <Route path="/map" element={<MapPage/>}></Route>
                   <Route path="/map/threapist/:id" element={<TherapistPage/>}></Route>
+                  <Route path="/circle/:id" element={<CirclePage/>}></Route>
                   <Route path="/therapist/:id" element={<TherapistDetails/>}></Route>
                   <Route path="/peer/:id" element={<PeerDetails/>}></Route>
               </Routes>
