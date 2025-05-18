@@ -384,8 +384,8 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900">
-      <Navbar />
-      <MenuAside/>
+      {/* <Navbar /> */}
+      {/* <MenuAside/> */}
       <div className="px-6 py-10 max-w-7xl mx-auto">
         <h1 className="text-4xl font-extrabold text-center mb-10 text-gray-800">
           Environmental & Psychological Dashboard

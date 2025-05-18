@@ -1,3 +1,4 @@
+// src/pages/HomePage.tsx
 import { useEffect } from 'react';
 
 // Lenis Scroll
@@ -6,19 +7,19 @@ import { LenisScroll } from '../assets/utils/LenisScroll';
 // Video
 import Video from '../components/Video';
 
-//Cursor Type
-import type {CursorType} from '../assets/utils/types'
+// Cursor Type
+import type { CursorType } from '../assets/utils/types'
 
-//Story
+// Story
 import Story from '../components/Story';
 
-//Label
+// Label
 import SponsorLabel from '../components/SponsorLabel'
 
-//StoryLine
+// StoryLine
 import StoryLine from '../components/StoryLine';
 
-//Team
+// Team
 import Team from '../components/Team';
 
 // ParallaxScroll
@@ -32,23 +33,27 @@ type VideoProps = {
   setVideoView: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const HomePage = ({setVideoView,setCursorType}:VideoProps) => {
+const HomePage = ({ setVideoView, setCursorType }: VideoProps) => {
+  useEffect(() => {
+    LenisScroll();
+  }, []);
 
-    useEffect(()=>{
-        LenisScroll()
-    },[])
-
-    return (
-        <div className="bg-white overflow-x-clip">
-            <Video setCursorType={setCursorType} setVideoView={setVideoView}></Video>
-            <Story></Story>
-            <SponsorLabel></SponsorLabel>
-            <StoryLine></StoryLine>
-            <Team></Team>
-            <div id="research-section"><ParallaxScroll setCursorType={setCursorType}></ParallaxScroll></div>
-            <Footer></Footer>
-        </div>
-    );
+  return (
+    <div className="bg-white overflow-x-clip">
+      <Video setCursorType={setCursorType} setVideoView={setVideoView} />
+      <Story />
+      <SponsorLabel />
+      <StoryLine />
+      <Team />
+      
+      {/* This is the anchor target for smooth scrolling */}
+      <div id="research-section">
+        <ParallaxScroll setCursorType={setCursorType} />
+      </div>
+      
+      <Footer />
+    </div>
+  );
 };
 
 export default HomePage;

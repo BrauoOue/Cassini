@@ -48,14 +48,14 @@ const MenuAside = ({ videoView }: MenuAsideProps) => {
         <motion.div
           variants={{
             open: { x: 0, width: "100vw" },
-            hidden: { x: 0, width: "5rem" },
-            exit: { x: "-100%" },
+            hidden: { x: 0, width: "5rem", scaleX: 1 },
+            exit: { scaleX: 0 },
           }}
           initial="hidden"
           animate={isOpenMenu ? "open" : "hidden"}
           transition={{ type: "spring", stiffness: 500, damping: 50 }}
           exit="exit"
-          className="fixed inset-0 h-screen z-[10000] overflow-hidden"
+          className="fixed inset-0 h-screen z-[10000] overflow-hidden origin-left"
         >
           <div className="absolute inset-0 bg-sky-50 backdrop-blur-sm z-0" />
 
