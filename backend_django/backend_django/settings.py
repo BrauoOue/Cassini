@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,7 +41,8 @@ INSTALLED_APPS = [
 
     'corsheaders',
     'rest_framework',
-    'api'
+    'api',
+    'django_pandas',  # For DataFrame operations
 ]
 
 MIDDLEWARE = [
@@ -83,17 +85,24 @@ WSGI_APPLICATION = 'backend_django.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'cassinidb',
+#         'USER': 'admin',
+#         'PASSWORD': 'admin',
+#         'HOST': 'localhost', # todo change to db when run with docker
+#         'PORT': '5433',
+#     }
+# }
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'cassinidb',
-        'USER': 'admin',
-        'PASSWORD': 'admin',
-        'HOST': 'localhost', # todo change to db when run with docker
-        'PORT': '5433',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 
 # Password validation
@@ -141,3 +150,24 @@ CORS_ALLOW_ALL_ORIGINS = True # TODO remove this in production
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # React (Vite) frontend
 ]
+
+# Copernicus API Settings
+COPERNICUS_API_URL = 'https://ads.atmosphere.copernicus.eu/api'
+COPERNICUS_API_KEY = os.getenv('COPERNICUS_API_KEY', '')  # Set this in environment variables
+
+# Cache settings for Copernicus data
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': os.path.join(BASE_DIR, 'django_cache'),
+        'TIMEOUT': 3600,  # 1 hour cache timeout
+        'OPTIONS': {
+            'MAX_ENTRIES': 1000
+        }
+    }
+}
+
+# Temporary file settings
+TEMP_DIR = os.path.join(BASE_DIR, 'temp')
+if not os.path.exists(TEMP_DIR):
+    os.makedirs(TEMP_DIR)

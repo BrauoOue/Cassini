@@ -9,7 +9,7 @@ export function Card({ className, ...props }: CardProps) {
   return (
     <div
       className={cn(
-        "rounded-2xl border-2 border-black shadow-md transition hover:shadow-lg flex justify-center items-center text-center",
+        "rounded-2xl shadow-md hover:shadow-lg transition flex justify-center items-center text-center",
         className
       )}
       {...props}
@@ -22,7 +22,5 @@ interface CardContentProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export function CardContent({ className, ...props }: CardContentProps) {
-  return (
-    <div className={cn("p-4", className)} {...props} />
-  );
+  return <div className={cn("p-4", className)} {...props} />;
 }
