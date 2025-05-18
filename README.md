@@ -28,9 +28,9 @@ VITE_API_DJANGO_URL=http://localhost:8000
 
 To start the frontend app, run these commands:
 
-cd frontend
-npm install
-npm run dev
+- `cd frontend`
+- `npm install`
+- `npm run dev`
 
 ### 3. Running with Docker
 
