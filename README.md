@@ -21,8 +21,8 @@ Team SatPulse's solution leverages satellite data and advanced AI to improve hea
 
 ### 1. Environment Variables  
 In the root directory (same location as your `.env` file), create a file named `.env.local` and add the following variables:
-VITE_API_SPRING_URL=http://localhost:8080
-VITE_API_DJANGO_URL=http://localhost:8000
+- `VITE_API_SPRING_URL=http://localhost:8080`
+- `VITE_API_DJANGO_URL=http://localhost:8000`
 
 ### 2. Running the Frontend
 
