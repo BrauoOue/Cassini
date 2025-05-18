@@ -28,14 +28,15 @@ const MenuAside = ({ videoView }: MenuAsideProps) => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence>
       {!videoView && (
         <motion.div
           variants={{
-            open: { width: "100vw" },
-            hidden: { width: "5rem" },
-            exit: {width: 0}
+            open: { x: 0, width: "100vw" },
+            hidden: { x: 0, width: "5rem" },
+            exit: { x: "-100%" },
           }}
+          initial="hidden"
           animate={isOpenMenu ? "open" : "hidden"}
           transition={{ type: "spring", stiffness: 500, damping: 50 }}
           exit="exit"
@@ -43,7 +44,7 @@ const MenuAside = ({ videoView }: MenuAsideProps) => {
         >
           <div className="absolute inset-0 bg-sky-50 backdrop-blur-sm z-0" />
 
-          <div className="absolute top-0 left-4 flex flex-col justify-between h-full py-6 z-[100]">
+          <div className="absolute top-0 left-4 flex flex-col justify-between py-6 h-full z-[100]">
             <HamburgerMenu
               isOpenMenu={isOpenMenu}
               toggleMenu={() => setIsOpenMenu((prev) => !prev)}
@@ -112,7 +113,7 @@ const HamburgerMenu = ({
 );
 
 const SocialMediaIcons = () => (
-  <ul className="flex flex-col items-center gap-6 md:gap-8 mb-20">
+  <ul className="flex flex-col items-center gap-6 md:gap-8 mb-8">
     {socialLinks.map((item, index) => (
       <li key={index} className="text-black text-3xl">
         <motion.a

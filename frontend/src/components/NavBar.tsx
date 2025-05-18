@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
@@ -12,7 +12,7 @@ type NavItemProp = {
 const navItems = [
   {
     type: "logo",
-    content: "SveMir",
+    content: "SveMir©",
     className: "mix-blend-difference text-white text-3xl font-black",
     to: "/",
   },
@@ -26,15 +26,19 @@ const navItems = [
 ];
 
 type NavBarProps = {
-  videoView?: boolean
-}
+  videoView?: boolean;
+};
 
-const NavBar = ({videoView}: NavBarProps) => {
+const NavBar = ({ videoView }: NavBarProps) => {
   const renderItem = (item: NavItemProp, index: number) => {
     switch (item.type) {
       case "logo":
         return (
-          <FlipLink videoView={videoView} key={index} className={item.className}>
+          <FlipLink
+            videoView={videoView}
+            key={index}
+            className={item.className}
+          >
             {item.content}
           </FlipLink>
         );
@@ -48,9 +52,21 @@ const NavBar = ({videoView}: NavBarProps) => {
   };
 
   return (
-    <nav className="fixed top-5 flex justify-between items-center w-screen mx-[5%] md:px-[10%] mix-blend-difference z-[10001] h-12 ">
-      {navItems.map(renderItem)}
-    </nav>
+    <AnimatePresence mode="wait">
+      {!videoView && (
+        <motion.nav 
+        variants={{
+          visible: {y: 0, opacity: 1},
+          hidden: {y: "100%",opacity: 0}
+        }}
+        initial="hidden"
+        animate="visible"
+        exit="hidden"
+        className="fixed top-5 flex justify-between items-center w-screen mx-[5%] md:px-[10%] mix-blend-difference z-[10001] h-12 ">
+          {navItems.map(renderItem)}
+        </motion.nav>
+      )}
+    </AnimatePresence>
   );
 };
 
@@ -59,11 +75,11 @@ export default NavBar;
 const FlipLink = ({
   children,
   className,
-  videoView
+  videoView,
 }: {
   children: string;
   className: string;
-  videoView: boolean | undefined
+  videoView: boolean | undefined;
 }) => {
   const DURATION = 0.25;
   const STAGGER = 0.025;
@@ -91,10 +107,10 @@ const FlipLink = ({
               delay: STAGGER * index,
             }}
             className={`relative inline-block ${
-              index === 15
+              index === 6
                 ? "inline-block font-semibold text-sm absolute -top-2.5 ml-0.5"
                 : ""
-            } ${index === 8 ? "mr-2" : "mr-0"}`}
+            }`}
           >
             {char}
           </motion.span>
@@ -117,10 +133,10 @@ const FlipLink = ({
               delay: STAGGER * index,
             }}
             className={`relative inline-block ${
-              index === 15
+              index === 6
                 ? "inline-block font-semibold text-sm absolute -top-4.5 ml-0.5"
                 : ""
-            } ${index === 8 ? "mr-2" : "mr-0"}`}
+            }`}
           >
             {char}
           </motion.span>
