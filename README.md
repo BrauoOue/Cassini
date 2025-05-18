@@ -36,6 +36,6 @@ To start the frontend app, run these commands:
 
 Open backend_django/settings.py and modify the database host and port as follows:
 
-'HOST': 'db', 
-'PORT': '5432',
+- `'HOST': 'db'`,
+- `'PORT': '5432'`
 
