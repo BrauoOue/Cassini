@@ -12,6 +12,7 @@ import TherapistDetails from "./pages/TherapistDetails.tsx";
 import Cursor from "./components/Cursor.tsx";
 import NavBar from "./components/NavBar.tsx";
 import MenuAside from "./components/MenuAside.tsx";
+import type {CursorType} from './assets/utils/types'
 import { useState } from 'react';
 
 function App() {
@@ -29,16 +30,18 @@ function App() {
     // fetchSpring()
 
     const [videoView,setVideoView] = useState<boolean>(true)
+    const [cursorType,setCursorType] = useState<CursorType>("default")
     
   return (
       <Router>
           <div className="App">
-            <Cursor></Cursor>
+            <Cursor cursorType={cursorType}></Cursor>
+            
             <NavBar videoView={videoView}></NavBar>
             <MenuAside videoView={videoView}></MenuAside>
-              {/* <NavBar/> */}
+              
               <Routes>
-                  <Route path="/" element={<HomePage setVideoView={setVideoView}/>}></Route>
+                  <Route path="/" element={<HomePage setCursorType={setCursorType} setVideoView={setVideoView}/>}></Route>
                   <Route path="/dashboard" element={<UserDashboard/>}></Route>
                   <Route path="/form" element={<FormPage/>}></Route>
                   <Route path="/map" element={<MapPage/>}></Route>
