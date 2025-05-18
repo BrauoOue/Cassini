@@ -5,7 +5,7 @@ This repository contains the full-stack solution developed by **Team SatPulse** 
 ---
 
 # Project Summary
-Team SatPulse's solution leverages satellite data and advanced AI to improve healthcare outcomes. The backend uses Django and PostgreSQL to manage data, while the React frontend provides a smooth and interactive user experience. This setup enables real-time analysis and visualization of medical and environmental data to support better healthcare decisions during the Cassini Hackathon.
+Svemir's solution leverages satellite data and advanced AI to improve healthcare outcomes. The backend uses Django and PostgreSQL to manage data, while the React frontend provides a smooth and interactive user experience. This setup enables real-time analysis and visualization of medical and environmental data to support better healthcare decisions during the Cassini Hackathon.
 
 ---
 
