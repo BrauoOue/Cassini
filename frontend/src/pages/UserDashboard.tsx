@@ -74,7 +74,7 @@ export default function Dashboard() {
   };
 
   return (
-      <div className="bg-white min-h-screen text-gray-900 font-sans px-6 py-10 mix-blend-difference text-black">
+      <div className="bg-white min-h-screen font-sans px-6 py-10 mix-blend-difference text-black">
         <header className="max-w-5xl mx-auto text-center">
           <h1 className="text-4xl font-bold text-black">Your Personal Peace Dashboard</h1>
           <p className="mt-2 text-gray-600">Using Space to find self peace</p>

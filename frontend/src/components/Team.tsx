@@ -2,10 +2,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const teamItems = [
-  { name: "Cassini", image: "/sponsors/cassini_.jpg" },
-  { name: "Copernicus", image: "/sponsors/copernicus.jpg" },
-  { name: "Netaville", image: "/sponsors/netaville.png" },
-  { name: "Netcetera", image: "/sponsors/netcetera.png" },
+  { name: "Researcher", image: "/team/andrea.jpg" },
+  { name: "DATA SPC & Pitcher", image: "/team/viktor.jpg" },
+  { name: "Creative Director", image: "/team/goch.jpg" },
+  { name: "Front-End Designer", image: "/team/leo.jpg" },
+  { name: "UI Architect", image: "/team/nikola.jpg" },
 ];
 
 const Team = () => {
@@ -28,7 +29,7 @@ const Team = () => {
 
         {teamItems.map((item, index) => (
           <div key={index} className="relative">
-            <div className="px-[5%] text-black text-[8em] text-center select-none">
+            <div className="px-[5%] text-black text-[8em] text-center select-none text-nowrap">
               {item.name}
             </div>
             <div
@@ -50,7 +51,7 @@ const Team = () => {
 
 export default Team;
 
-const IMAGE_HEIGHT = 208;
+const IMAGE_HEIGHT = 256;
 
 const PictureSlider = ({ idx }: { idx: number }) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -68,7 +69,7 @@ const PictureSlider = ({ idx }: { idx: number }) => {
       animate={{ x: position.x - 104, y: position.y - 104 }}
       exit={{ scaleY: 0, opacity: 0, transition: {duration: 0.45} }}
       transition={{ type: "spring", stiffness: 500, damping: 50 }}
-      className="w-68 h-62 rounded-md overflow-hidden fixed top-0 left-0 origin-center shadow-lg bg-white pointer-events-none flex"
+      className="w-64 h-64 rounded-md overflow-hidden fixed top-0 left-0 origin-center shadow-lg bg-white pointer-events-none flex"
     >
       <motion.div
         animate={{ translateY: -idx * IMAGE_HEIGHT }}
@@ -80,7 +81,7 @@ const PictureSlider = ({ idx }: { idx: number }) => {
             key={index}
             src={item.image}
             alt={item.name}
-            className="w-full h-52 object-cover select-none pointer-events-none"
+            className="w-full h-64 object-cover select-none pointer-events-none"
             draggable={false}
           />
         ))}

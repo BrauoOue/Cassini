@@ -32,6 +32,7 @@ function App() {
     const [videoView,setVideoView] = useState<boolean>(true)
     const [cursorType,setCursorType] = useState<CursorType>("default")
     
+    
   return (
       <Router>
           <div className="App">

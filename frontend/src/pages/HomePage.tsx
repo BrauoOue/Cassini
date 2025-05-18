@@ -24,11 +24,13 @@ import Team from '../components/Team';
 // ParallaxScroll
 import ParallaxScroll from '../components/ParallaxScroll';
 
+// Footer
+import Footer from '../components/Footer';
+
 type VideoProps = {
   setCursorType: React.Dispatch<React.SetStateAction<CursorType>>;
   setVideoView: React.Dispatch<React.SetStateAction<boolean>>;
 };
-
 
 const HomePage = ({setVideoView,setCursorType}:VideoProps) => {
 
@@ -43,7 +45,8 @@ const HomePage = ({setVideoView,setCursorType}:VideoProps) => {
             <SponsorLabel></SponsorLabel>
             <StoryLine></StoryLine>
             <Team></Team>
-            <ParallaxScroll></ParallaxScroll>
+            <div id="research-section"><ParallaxScroll setCursorType={setCursorType}></ParallaxScroll></div>
+            <Footer></Footer>
         </div>
     );
 };

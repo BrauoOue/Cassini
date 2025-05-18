@@ -4,7 +4,7 @@ import { motion, useInView } from "framer-motion";
 const text =
   "“Transforming data into decisions, and visions into reality – that’s the Atomic Health difference.”";
 
-const team = ["Team BrauOue,", "BlaBla,", "POMOZITE MI DRUGOVI"];
+const team = ["Team BrauOue,", "Data Wizards,", "Visionaries"];
 
 const containerVariants = {
   hidden: {},
