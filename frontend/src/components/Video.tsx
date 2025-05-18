@@ -10,6 +10,7 @@ import { useRef, useEffect } from "react";
 import type { CursorType } from "../assets/utils/types";
 
 const videoUrl = "../../public/satelit.mp4";
+const videoUrl2 = "../../public/thumb.mp4";
 
 type VideoProps = {
   setCursorType: React.Dispatch<React.SetStateAction<CursorType>>;
@@ -75,7 +76,7 @@ const Video = ({ setVideoView, setCursorType }: VideoProps) => {
       >
         <motion.video
           style={{ clipPath, scale }}
-          src={videoUrl}
+          src={videoUrl2}
           autoPlay
           muted
           loop

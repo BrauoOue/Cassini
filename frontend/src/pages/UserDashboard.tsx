@@ -376,7 +376,6 @@ export default function Dashboard() {
     new Set(mockData.map((d) => d.location.country))
   );
 
-  type InputKeys = keyof (typeof mockData)[0]["inputs"];
 
   const average = (key: InputKeys) => {
     const values = filteredData.map((d) => d.inputs[key]);

@@ -2,7 +2,10 @@
 import { CiInstagram } from "react-icons/ci";
 import { FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useState,useEffect } from "react";
+
+import { useNavigate, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const socialLinks = [
   {
@@ -19,6 +22,7 @@ const socialLinks = [
 ];
 
 const menuContentItems = ["Home", "Dashboard", "Researches"];
+const menuContentUrls = ["/", "/dashboard", "/#research-section"];
 
 type MenuAsideProps = {
   videoView: boolean;
@@ -26,6 +30,17 @@ type MenuAsideProps = {
 
 const MenuAside = ({ videoView }: MenuAsideProps) => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
+  const navigate = useNavigate();
+
+  const handleNavigate = (text: string) => {
+    navigate(text);
+  };
+
+  const location = useLocation();
+
+  useEffect(() => {
+    setTimeout(() => setIsOpenMenu(false), 100);
+  }, [location]);
 
   return (
     <AnimatePresence>
@@ -53,7 +68,7 @@ const MenuAside = ({ videoView }: MenuAsideProps) => {
           </div>
 
           <AnimatePresence mode="wait">
-            {isOpenMenu && <MenuContent />}
+            {isOpenMenu && <MenuContent handleNavigate={handleNavigate} />}
           </AnimatePresence>
         </motion.div>
       )}
@@ -130,60 +145,84 @@ const SocialMediaIcons = () => (
   </ul>
 );
 
-const MenuContent = () => (
+const MenuContent = ({
+  handleNavigate,
+}: {
+  handleNavigate: (arg: string) => void;
+}) => (
   <div className="absolute top-1/4 left-40 flex flex-col gap-8 font-bold">
     {menuContentItems.map((item, index) => (
       <motion.div key={index} className="relative overflow-hidden">
-        <MenuContentItem item={item} index={index} />
+        <MenuContentItem
+          to={menuContentUrls[index]}
+          handleNavigate={handleNavigate}
+          item={item}
+          index={index}
+        />
       </motion.div>
     ))}
   </div>
 );
 
-const MenuContentItem = ({ item, index }: { item: string; index: number }) => {
+const MenuContentItem = ({
+  item,
+  index,
+  handleNavigate,
+  to,
+}: {
+  item: string;
+  index: number;
+  handleNavigate: (arg: string) => void;
+  to: string;
+}) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div className="relative w-fit">
-      <motion.div
-        className="absolute inset-0 w-full h-full bg-black rounded-xl"
-        style={{ originX: 0 }}
-        variants={{
-          hidden: { scaleX: 0 },
-          visible: { scaleX: 1 },
-        }}
-        initial="hidden"
-        animate={isHovered ? "visible" : "hidden"}
-        transition={{ type: "spring", stiffness: 150, damping: 20 }}
-      />
-      <motion.div
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        className="relative text-white text-6xl mix-blend-difference "
-        variants={{
-          hidden: {
-            y: "100%",
-            opacity: 0,
-            transition: {
-              ease: "easeInOut",
-              delay: 0.1 * index,
+    <Link to={to}>
+      <div className="relative w-fit">
+        <motion.div
+          className="absolute inset-0 w-full h-full bg-black rounded-xl"
+          style={{ originX: 0 }}
+          variants={{
+            hidden: { scaleX: 0 },
+            visible: { scaleX: 1 },
+          }}
+          initial="hidden"
+          animate={isHovered ? "visible" : "hidden"}
+          transition={{ type: "spring", stiffness: 150, damping: 20 }}
+        />
+        <motion.div
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          onClick={() => {
+            handleNavigate(to);
+          }}
+          className="relative text-white text-6xl mix-blend-difference "
+          variants={{
+            hidden: {
+              y: "100%",
+              opacity: 0,
+              transition: {
+                ease: "easeInOut",
+                delay: 0.1 * index,
+              },
             },
-          },
-          visible: {
-            y: 0,
-            opacity: 1,
-            transition: {
-              ease: "easeInOut",
-              delay: 0.1 * index,
+            visible: {
+              y: 0,
+              opacity: 1,
+              transition: {
+                ease: "easeInOut",
+                delay: 0.1 * index,
+              },
             },
-          },
-        }}
-        initial="hidden"
-        animate="visible"
-        exit="hidden"
-      >
-        {item}
-      </motion.div>
-    </div>
+          }}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+        >
+          {item}
+        </motion.div>
+      </div>
+    </Link>
   );
 };
