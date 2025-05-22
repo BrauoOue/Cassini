@@ -1,6 +1,6 @@
 # Cassini Hackathon - Team SatPulse Solution
 
-This repository contains the full-stack solution developed by **Team SatPulse** for the Cassini Hackathon.
+This repository contains the full-stack solution developed by **SveMir** for the Cassini Hackathon.
 
 ---
 
